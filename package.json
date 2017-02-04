@@ -26,5 +26,17 @@
     "dev": "NODE_ENV=development nodemon -w src --exec \"babel-node src\"",
     "test": "NODE_ENV=test standard && jest",
     "test:watch": "NODE_ENV=test jest --watch"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect"
+    ]
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
   }
 }

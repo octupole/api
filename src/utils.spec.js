@@ -30,7 +30,7 @@ describe('utils', () => {
         term_end: '2040-1-09'
       }]
 
-      const result = isUpForElection(expected.concat({ name: 'Not Jim', term_end: '2038-1-09'}), 2039)
+      const result = isUpForElection(expected.concat({ name: 'Not Jim', term_end: '2038-1-09' }), 2039)
 
       expect(result).toEqual(expected)
       expect(result.length).toEqual(1)
@@ -38,7 +38,7 @@ describe('utils', () => {
     })
 
     it('should return an empty array if no reps are up for re-election', () => {
-      const result = isUpForElection([{ name: 'Not Jim', term_end: '2038-1-09'}], 2057)
+      const result = isUpForElection([{ name: 'Not Jim', term_end: '2038-1-09' }], 2057)
       expect(result.length).toEqual(0)
     })
   })
