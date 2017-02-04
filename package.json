@@ -18,9 +18,13 @@
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
-    "nodemon": "^1.11.0"
+    "jest": "^18.1.0",
+    "nodemon": "^1.11.0",
+    "standard": "^8.6.0"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon -w src --exec \"babel-node src\""
+    "dev": "NODE_ENV=development nodemon -w src --exec \"babel-node src\"",
+    "test": "NODE_ENV=test standard && jest",
+    "test:watch": "NODE_ENV=test jest --watch"
   }
 }
