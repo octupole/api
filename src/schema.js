@@ -8,11 +8,12 @@ import {
 } from 'graphql'
 
 import fetch from 'isomorphic-fetch'
-import moment from 'moment'
 
-function formSunlightRequest (zipcode) {
-  return `https://congress.api.sunlightfoundation.com/legislators/locate?zip=${zipcode}`
-}
+import {
+  formSunlightRequest,
+  genElectionName,
+  isUpForElection
+} from './utils'
 
 async function fetchRepsForZipcode (zipcode) {
   try {
@@ -22,17 +23,6 @@ async function fetchRepsForZipcode (zipcode) {
   } catch (error) {
     console.error(error)
   }
-}
-
-function isUpForElection (reps, year) {
-    // a representative is considered up for re-election if their term end is
-    // equal to the year of the election in question + 1, since terms typically
-    // end in january after that election year
-  return reps.filter(rep => moment(rep.term_end).year() === year + 1)
-}
-
-function genElectionName (year) {
-  return year % 4 === 0 ? `${year} general election` : `${year} general election (midterm)`
 }
 
 const ElectionType = new GraphQLObjectType({
